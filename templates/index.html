@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dz Boost — متابعين، إعجابات، مشاهدات مجاناً</title>
+    <meta name="description" content="Dz Boost - احصل على متابعين وإعجابات ومشاهدات إنستغرام مجاناً. سريع، آمن، بدون تسجيل.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body {
+            font-family: -apple-system, 'Segoe UI', 'Tahoma', sans-serif;
+            background: #0a0e1a;
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .bg-orbs { position: fixed; inset: 0; z-index: -1; overflow: hidden; }
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: float 20s infinite ease-in-out;
+        }
+        .orb1 { width: 400px; height: 400px; background: #833ab4; top: -100px; right: -100px; }
+        .orb2 { width: 350px; height: 350px; background: #fd1d1d; bottom: -100px; left: -100px; animation-delay: -7s; }
+        .orb3 { width: 300px; height: 300px; background: #fcb045; top: 40%; left: 30%; animation-delay: -14s; }
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(50px, -50px) scale(1.1); }
+            66% { transform: translate(-50px, 50px) scale(0.9); }
+        }
+
+        .container { max-width: 700px; margin: 0 auto; padding: 20px; }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            box-shadow: 0 4px 20px rgba(253, 29, 29, 0.4);
+        }
+        .logo-text {
+            background: linear-gradient(90deg, #833ab4, #fd1d1d, #fcb045);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero { text-align: center; padding: 20px 20px 40px; }
+        .hero h1 {
+            font-size: 32px;
+            line-height: 1.3;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+        .hero h1 .gradient {
+            background: linear-gradient(90deg, #833ab4, #fd1d1d, #fcb045);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero p {
+            font-size: 16px;
+            color: #8b95a7;
+            line-height: 1.7;
+            max-width: 500px;
+            margin: 0 auto 30px;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 18px 35px;
+            background: linear-gradient(90deg, #833ab4, #fd1d1d, #fcb045);
+            color: white;
+            text-decoration: none;
+            border-radius: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 8px 30px rgba(253, 29, 29, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(253, 29, 29, 0.6);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 40px 0;
+        }
+        .feature {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 15px;
+            padding: 20px 15px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .feature:hover { transform: translateY(-5px); }
+        .feature-icon { font-size: 28px; margin-bottom: 10px; }
+        .feature h3 { font-size: 14px; margin-bottom: 5px; font-weight: 600; }
+        .feature p { font-size: 12px; color: #6b7280; }
+
+        .services {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 30px 25px;
+            margin-bottom: 30px;
+        }
+        .services h2 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .service-list {
+            display: grid;
+            gap: 12px;
+        }
+        .service-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 12px;
+            font-size: 15px;
+            transition: transform 0.2s;
+        }
+        .service-item:hover { transform: translateX(-5px); }
+        .service-item .left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .service-item .icon { font-size: 24px; }
+        .service-item .limit {
+            font-size: 12px;
+            color: #a78bfa;
+            background: rgba(139, 92, 246, 0.15);
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        .about {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 30px 25px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .about h2 { font-size: 20px; margin-bottom: 15px; }
+        .about p { color: #a0a8b8; line-height: 1.9; font-size: 14px; }
+
+        .telegram-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px auto;
+            padding: 14px 20px;
+            background: linear-gradient(135deg, #0088cc, #229ED9);
+            border-radius: 12px;
+            text-decoration: none;
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            max-width: 350px;
+            box-shadow: 0 4px 15px rgba(34, 158, 217, 0.4);
+            transition: transform 0.3s;
+        }
+        .telegram-btn:hover { transform: translateY(-3px); }
+
+        footer { text-align: center; padding: 30px 20px; }
+        .dev {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 50px;
+            text-decoration: none;
+            color: white;
+            margin-bottom: 15px;
+        }
+        .dev-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .dev-icon svg { width: 16px; height: 16px; fill: white; }
+        .dev span { font-size: 14px; font-weight: 600; }
+        .copyright { font-size: 12px; color: #4b5563; margin-top: 10px; }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 24px; }
+            .hero p { font-size: 14px; }
+            .cta-btn { font-size: 16px; padding: 15px 25px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-orbs">
+        <div class="orb orb1"></div>
+        <div class="orb orb2"></div>
+        <div class="orb orb3"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="logo-icon">⚡</div>
+                <span class="logo-text">Dz Boost</span>
+            </div>
+        </header>
+
+        <div class="hero">
+            <h1>عزّز حسابك على <span class="gradient">إنستغرام</span> مجاناً</h1>
+            <p>متابعين، إعجابات، ومشاهدات — كل ما تحتاجه لتنمية حسابك. سريع، آمن، وبدون تسجيل.</p>
+            <a href="/order" class="cta-btn">🚀 اطلب الآن مجاناً</a>
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">⚡</div>
+                <h3>سريع جداً</h3>
+                <p>خلال دقائق</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🆓</div>
+                <h3>مجاني 100%</h3>
+                <p>بدون رسوم</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🔒</div>
+                <h3>آمن</h3>
+                <p>بدون كلمة مرور</p>
+            </div>
+        </div>
+
+        <div class="services">
+            <h2>🎁 خدماتنا المجانية</h2>
+            <div class="service-list">
+                <div class="service-item">
+                    <div class="left">
+                        <span class="icon">📸</span>
+                        <span>متابعين إنستغرام</span>
+                    </div>
+                    <span class="limit">حتى 50 يومياً</span>
+                </div>
+                <div class="service-item">
+                    <div class="left">
+                        <span class="icon">👁️</span>
+                        <span>مشاهدات ريلز</span>
+                    </div>
+                    <span class="limit">حتى 500 يومياً</span>
+                </div>
+                <div class="service-item">
+                    <div class="left">
+                        <span class="icon">❤️</span>
+                        <span>إعجابات</span>
+                    </div>
+                    <span class="limit">حتى 300 يومياً</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="about">
+            <h2>🌟 عن Dz Boost</h2>
+            <p>
+                Dz Boost منصة مجانية تساعدك على تعزيز حسابك على إنستغرام بسرعة وسهولة.
+                بدون تسجيل، بدون كلمة مرور — فقط أدخل اسم حسابك واطلب.
+                خدمة موثوقة من المطور <strong>@_u.wej</strong>.
+            </p>
+        </div>
+
+        <a href="{{ telegram_channel }}" target="_blank" class="telegram-btn">
+            📢 انضم إلى قناتنا على تلغرام
+        </a>
+
+        <footer>
+            <a href="{{ instagram_url }}" target="_blank" class="dev">
+                <div class="dev-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+                    </svg>
+                </div>
+                <span>تابعني على إنستغرام @_u.wej</span>
+            </a>
+            <div class="copyright">© 2025 Dz Boost — جميع الحقوق محفوظة</div>
+        </footer>
+    </div>
+</body>
+</html>
